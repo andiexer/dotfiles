@@ -20,18 +20,18 @@ plug "$HOME/.config/zsh/exports.zsh"
 # plugins
 plug "esc/conda-zsh-completion"
 plug "zsh-users/zsh-autosuggestions"
-plug "hlissner/zsh-autopair"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/vim"
-plug "zap-zsh/zap-prompt"
-plug "zap-zsh/fzf"
-plug "zap-zsh/exa"
+#plug "zap-zsh/vim"
+#plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
-plug "chrishrb/zsh-kubectl"
-plug "wintermi/zsh-brew"
+#plug "wintermi/zsh-brew"
 plug "romkatv/powerlevel10k"
+plug "zap-zsh/exa"
 
 export PATH="$HOME/.local/bin":$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# autocompletion for kubernetes
+source <(kubectl completion zsh)

@@ -1,0 +1,12 @@
+plugin:
+  externalsecret-sync:
+    shortCut: Ctrl-F
+    description: Force Sync
+    scopes:
+    - externalsecret 
+    command: bash 
+    background: false
+    confirm: true
+    args:
+    - -c
+    - kubectl annotate es $NAME -n $NAMESPACE force-sync=$(date +%s) --overwrite

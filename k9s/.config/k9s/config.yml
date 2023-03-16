@@ -15,10 +15,31 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: prod
-  currentCluster: prod
+  currentContext: test
+  currentCluster: test
   clusters:
     prod:
+      namespace:
+        active: dg-sales
+        lockFavorites: false
+        favorites:
+        - dg-aftersales
+        - dg-sales
+        - default
+      view:
+        active: pods
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+      portForwardAddress: localhost
+    test:
       namespace:
         active: dg-sales
         lockFavorites: false
@@ -26,7 +47,7 @@ k9s:
         - dg-sales
         - default
       view:
-        active: po
+        active: externalsecret
       featureGates:
         nodeShell: false
       shellPod:

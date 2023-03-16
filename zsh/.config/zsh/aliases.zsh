@@ -16,3 +16,5 @@ alias zsh-update-plugins="find "$ZDOTDIR/plugins" -type d -exec test -e '{}/.git
 
 alias df='df -h'
 alias free='free -m'
+
+alias editzsh='nvim ~/.zshrc'

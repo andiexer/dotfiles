@@ -10,3 +10,20 @@ plugin:
     args:
     - -c
     - kubectl annotate es $NAME -n $NAMESPACE force-sync=$(date +%s) --overwrite
+  scaledobject-scaleto-zero:
+    shortCut: Ctrl-P
+    description: Toggle Scale to Zero
+    scopes:
+    - scaledobject
+    command: bash
+    background: false
+    confirm: true
+    args:
+    - -c
+    - |
+      if [ -z $(kubectl get scaledobject $NAME -n $NAMESPACE -o jsonpath='{.metadata.annotations.autoscaling\.keda\.sh/paused-replicas}') ];
+      then
+        kubectl annotate scaledobject $NAME -n $NAMESPACE autoscaling.keda.sh/paused-replicas=0 --overwrite
+      else
+        kubectl annotate scaledobject $NAME -n $NAMESPACE autoscaling.keda.sh/paused-replicas-
+      fi

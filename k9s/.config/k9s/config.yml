@@ -52,7 +52,7 @@ k9s:
         - dg-sales
         - default
       view:
-        active: cronjob
+        active: pods
       featureGates:
         nodeShell: false
       shellPod:

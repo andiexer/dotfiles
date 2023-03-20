@@ -55,3 +55,17 @@ plugin:
     - -c
     - |
       open "https://app.datadoghq.eu/logs?query=pod_name%3A$NAME"
+  goto-datadog-servicve-logs: 
+    shortCut: Ctrl-O 
+    description: Goto Datadog Service Logs 
+    scopes:
+    - po
+    command: bash
+    background: false
+    confirm: true
+    args:
+    - -c
+    - |
+      svc=$(kubectl get po $NAME -n $NAMESPACE -o jsonpath='{.metadata.labels.tags\.datadoghq\.com/service}')
+      env=$(kubectl get po $NAME -n $NAMESPACE -o jsonpath='{.metadata.labels.tags\.datadoghq\.com/env}')
+      open "https://app.datadoghq.eu/logs?query=service%3A$svc%20env%3A$env"

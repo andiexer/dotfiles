@@ -15,14 +15,17 @@ k9s:
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: test
-  currentCluster: test
+  currentContext: prod
+  currentCluster: prod
   clusters:
     prod:
       namespace:
         active: dg-sales
         lockFavorites: false
         favorites:
+        - all
+        - dg-devinite
+        - graphql
         - dg-aftersales
         - dg-sales
         - default
@@ -44,10 +47,12 @@ k9s:
         active: dg-sales
         lockFavorites: false
         favorites:
+        - keda
+        - all
         - dg-sales
         - default
       view:
-        active: es
+        active: cronjob
       featureGates:
         nodeShell: false
       shellPod:

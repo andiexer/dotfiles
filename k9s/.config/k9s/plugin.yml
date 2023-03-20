@@ -27,3 +27,31 @@ plugin:
       else
         kubectl annotate scaledobject $NAME -n $NAMESPACE autoscaling.keda.sh/paused-replicas-
       fi
+  disable-cronjob: 
+    shortCut: Ctrl-N 
+    description: never run (31 Feb) 
+    scopes:
+    - cj
+    command: kubectl
+    background: false
+    confirm: true
+    args:
+    - patch
+    - cronjob
+    - $NAME
+    - -n 
+    - $NAMESPACE
+    - -p
+    - '{"spec" : {"schedule" : "0 0 31 2 *"}}'
+  goto-datadog-logs: 
+    shortCut: Ctrl-L 
+    description: Goto Datadog Logs 
+    scopes:
+    - po
+    command: bash
+    background: false
+    confirm: true
+    args:
+    - -c
+    - |
+      open "https://app.datadoghq.eu/logs?query=pod_name%3A$NAME"

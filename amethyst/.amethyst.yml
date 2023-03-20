@@ -1,0 +1,25 @@
+# layouts
+layouts:
+- tall
+- wide
+- fullscreen
+- column
+- 3column-middle
+
+mod1:
+- option
+- shift
+
+mod2:
+- option
+- shift
+- control
+
+relaunch-amethyst:
+  mod: mod1
+  key: r
+
+mouse-resizes-windows: true
+
+window-margins: true
+window-margin-size: 6

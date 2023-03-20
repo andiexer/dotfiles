@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # work
-alias dg-login='kinit andreas.exer@INTRANET.DIGITEC && MssqlKerberos'
+alias dg-login='kinit andreas.exer@INTRANET.DIGITEC' 
 alias ktest="kubectl config use-context test"
 alias kprod="kubectl config use-context prod"
 alias k9="k9s -n dg-sales"

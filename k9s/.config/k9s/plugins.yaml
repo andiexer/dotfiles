@@ -1,4 +1,4 @@
-plugin:
+plugins:
   externalsecret-sync:
     shortCut: Ctrl-F
     description: Force Sync

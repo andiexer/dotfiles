@@ -1,4 +1,4 @@
-plugin:
+plugins:
   externalsecret-sync:
     shortCut: Ctrl-F
     description: Force Sync
@@ -11,7 +11,7 @@ plugin:
     - -c
     - kubectl annotate es $NAME -n $NAMESPACE force-sync=$(date +%s) --overwrite
   scaledobject-scaleto-zero:
-    shortCut: Ctrl-P
+    shortCut: Ctrl-O
     description: Toggle Scale to Zero
     scopes:
     - scaledobject
@@ -26,6 +26,23 @@ plugin:
         kubectl annotate scaledobject $NAME -n $NAMESPACE autoscaling.keda.sh/paused-replicas=0 --overwrite
       else
         kubectl annotate scaledobject $NAME -n $NAMESPACE autoscaling.keda.sh/paused-replicas-
+      fi
+  scaledjob-scaleto-zero:
+    shortCut: Ctrl-O
+    description: Toggle Scale to Zero
+    scopes:
+    - scaledjob
+    command: bash
+    background: false
+    confirm: true
+    args:
+    - -c
+    - |
+      if [ -z $(kubectl get scaledjob $NAME -n $NAMESPACE -o jsonpath='{.metadata.annotations.autoscaling\.keda\.sh/paused}') ];
+      then
+        kubectl annotate scaledjob $NAME -n $NAMESPACE autoscaling.keda.sh/paused=true --overwrite
+      else
+        kubectl annotate scaledjob $NAME -n $NAMESPACE autoscaling.keda.sh/paused-
       fi
   disable-cronjob: 
     shortCut: Ctrl-N 

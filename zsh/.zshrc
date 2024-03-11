@@ -7,6 +7,15 @@ fi
 
 [ -f "$HOME/.local/share/zap/zap.zsh" ] && source "$HOME/.local/share/zap/zap.zsh"
 
+export PATH="/Users/andiexer/.local/bin:/usr/local/share/dotnet:/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/andiexer/Library/Application Support/JetBrains/Toolbox/scripts:$HOME/dotnet"
+export DOTNET_ROOT="$HOME/dotnet"
+export XDG_CONFIG_HOME="$HOME/.config"
+export EDITOR=nvim
+export VISUAL="$EDITOR"
+export MonolithRoot="/Users/andiexer/development/dg/devinite"
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # history
 HISTFILE=~/.zsh_history
 
@@ -15,23 +24,19 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # source 
 plug "$HOME/.config/zsh/aliases.zsh"
-plug "$HOME/.config/zsh/exports.zsh"
 
 # plugins
 plug "esc/conda-zsh-completion"
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-#plug "zap-zsh/vim"
-#plug "zap-zsh/zap-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
-#plug "wintermi/zsh-brew"
 plug "romkatv/powerlevel10k"
 plug "zap-zsh/exa"
 
-export PATH="$HOME/.local/bin":$PATH
+
+### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
+export PATH="/Users/andiexer/.rd/bin:$PATH"
+### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# autocompletion for kubernetes
-source <(kubectl completion zsh)

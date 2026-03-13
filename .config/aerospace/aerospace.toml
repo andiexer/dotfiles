@@ -1,0 +1,203 @@
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = [
+  # use janky boarders to show focused windows
+  "exec-and-forget borders active_color=0xffcba6f7 inactive_color=0xff494d64 width=5.0"
+]
+# Start AeroSpace at login
+start-at-login = true
+exec-on-workspace-change = [
+  "/bin/bash",
+  "-c",
+  "sketchybar --trigger aerospace_workspace_changed FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE"
+]
+on-focused-monitor-changed = ["move-mouse monitor-lazy-center"]
+# on-focus-changed = [
+#   "move-mouse window-lazy-center",
+#   "exec-and-forget /opt/homebrew/bin/sketchybar --trigger front_app_switched",
+#   "exec-and-forget /bin/bash -c 'sketchybar --trigger window_mode_changed MODE=$(aerospace list-windows --focused --format %{window-layout})'",
+# ]
+# on-focus-changed = [
+#   "move-mouse window-lazy-center",
+#   "exec-and-forget /bin/bash -c 'LOCK=/tmp/aerospace_focus.lock; if [ ! -f $LOCK ]; then touch $LOCK; sleep 0.15; rm $LOCK; /opt/homebrew/bin/sketchybar --trigger front_app_switched; /opt/homebrew/bin/sketchybar --trigger window_mode_changed MODE=$(aerospace list-windows --focused --format %{window-layout}); fi'",
+#   "exec-and-forget /bin/bash -c 'sketchybar --trigger window_mode_changed MODE=$(aerospace list-windows --focused --format %{window-layout})'",
+# ]
+on-focus-changed = [
+  "move-mouse window-lazy-center",
+  "exec-and-forget /Users/andiexer/.config/aerospace/focus_changed.sh"
+]
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 30
+default-root-container-layout = "tiles"
+default-root-container-orientation = "auto"
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = false
+
+[key-mapping]
+preset = "qwerty"
+
+[gaps]
+outer.bottom = [{ monitor.'^built-in retina display$' = 10 }, 15]
+outer.top = [{ monitor.'^built-in retina display$' = 10 }, 55]
+outer.left = 15
+outer.right = 15
+inner.horizontal = 15
+inner.vertical = 15
+
+[mode.main.binding]
+# See: https://nikitabobko.github.io/AeroSpace/commands#layout
+ctrl-f = "fullscreen"
+ctrl-space = "layout tiling floating"
+# See: https://nikitabobko.github.io/AeroSpace/commands#focus
+ctrl-h = "focus left"
+ctrl-j = "focus down"
+ctrl-k = "focus up"
+ctrl-l = "focus right"
+# See: https://nikitabobko.github.io/AeroSpace/commands#move
+ctrl-shift-h = "move left"
+ctrl-shift-j = "move down"
+ctrl-shift-k = "move up"
+ctrl-shift-l = "move right"
+# See: https://nikitabobko.github.io/AeroSpace/commands#workspace
+ctrl-1 = "workspace 1"  # Notes
+ctrl-2 = "workspace 2"  # Terminal
+ctrl-3 = "workspace 3"  # Browser
+ctrl-4 = "workspace 4"  # AltBrowser
+ctrl-5 = "workspace 5"  # Remote
+ctrl-6 = "workspace 6"  # Database
+ctrl-7 = "workspace 7"  # Chat
+ctrl-8 = "workspace 8"  # Mail
+ctrl-9 = "workspace 9"  # Music
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
+ctrl-shift-1 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 1 && sketchybar --trigger update_spaces"'
+ctrl-shift-2 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 2 && sketchybar --trigger update_spaces"'
+ctrl-shift-3 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 3 && sketchybar --trigger update_spaces"'
+ctrl-shift-4 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 4 && sketchybar --trigger update_spaces"'
+ctrl-shift-5 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 5 && sketchybar --trigger update_spaces"'
+ctrl-shift-6 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 6 && sketchybar --trigger update_spaces"'
+ctrl-shift-7 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 7 && sketchybar --trigger update_spaces"'
+ctrl-shift-8 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 8 && sketchybar --trigger update_spaces"'
+ctrl-shift-9 = 'exec-and-forget bash -c "aerospace move-node-to-workspace 9 && sketchybar --trigger update_spaces"'
+ctrl-tab = "workspace-back-and-forth"
+# See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
+ctrl-shift-tab = "move-workspace-to-monitor --wrap-around next"
+# See: https://nikitabobko.github.io/AeroSpace/commands#mode
+ctrl-shift-semicolon = [
+  "mode service",
+  'exec-and-forget sketchybar --trigger send_message MESSAGE="SERVICE MODE" HOLD="true"'
+]
+ctrl-r = [
+  "mode resize",
+  'exec-and-forget sketchybar --trigger send_message MESSAGE="RESIZE MODE" HOLD="true"'
+]
+cmd-h = []  # Disable "hide application"
+cmd-alt-h = []  # Disable "hide others"
+ctrl-g = [
+  "mode join",
+  'exec-and-forget sketchybar --trigger send_message MESSAGE="JOIN MODE" HOLD="true"'
+]
+
+# ctrl-p = 'move-workspace-to-monitor --wrap-around next'
+
+# [workspace-to-monitor-force-assignment]
+#     1 = "DELL U3415W"
+#     2 = "DELL U3415W"
+#     3 = "DELL U3415W"
+#     4 = "DELL U3415W"
+#     5 = "DELL U3415W"
+#     6 = "DELL U3415W"
+#     7 = "Built-in Retina Display"
+#     8 = "Built-in Retina Display"
+#     9 = "Built-in Retina Display"
+#
+
+[mode.join.binding]
+h = [
+  "join-with left",
+  "mode main",
+  "exec-and-forget sketchybar --trigger hide_message"
+]
+j = [
+  "join-with down",
+  "mode main",
+  "exec-and-forget sketchybar --trigger hide_message"
+]
+k = [
+  "join-with up",
+  "mode main",
+  "exec-and-forget sketchybar --trigger hide_message"
+]
+l = [
+  "join-with right",
+  "mode main",
+  "exec-and-forget sketchybar --trigger hide_message"
+]
+
+[mode.resize.binding]
+h = "resize smart -50"
+l = "resize smart +50"
+esc = ["mode main", "exec-and-forget sketchybar --trigger hide_message"]
+enter = ["mode main", "exec-and-forget sketchybar --trigger hide_message"]
+
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+esc = [
+  "reload-config",
+  "exec-and-forget sketchybar --trigger hide_message",
+  "exec-and-forget sketchybar --reload",
+  "mode main"
+]
+r = ["flatten-workspace-tree", "mode main"]  # reset layout
+f = [
+  "layout floating tiling",
+  "mode main"
+]  # Toggle between floating and tiling layout
+backspace = ["close-all-windows-but-current", "mode main"]
+
+[workspace-to-monitor-force-assignment]
+1 = 1
+2 = 3
+3 = 3
+4 = 3
+5 = 1
+6 = 3
+7 = "Built-in Retina Display"
+8 = "Built-in Retina Display"
+9 = "Built-in Retina Display"
+
+[[on-window-detected]]
+if.app-id = "org.godotengine.godot"
+run = ["move-node-to-workspace 5", "layout floating"]
+
+# AUTO ASSIGNMENTS OF APPLICATIONS
+# WORKSPACE 1 - IDE
+[[on-window-detected]]
+if.app-id = "com.jetbrains.rider"
+run = ["move-node-to-workspace 1"]
+
+# WORKSPACE 2 - WORK BROWSER
+[[on-window-detected]]
+if.app-id = "com.brave.Browser"
+run = ["move-node-to-workspace 2"]
+
+# WORKSPACE 3 - TERMINAL
+[[on-window-detected]]
+if.app-id = "com.mitchellh.ghostty"
+run = ["move-node-to-workspace 3"]
+
+# WORKSPACE 4 - WORK BROWSER
+[[on-window-detected]]
+if.app-id = "com.google.Chrome"
+run = ["move-node-to-workspace 4"]
+
+# WORKSPACE 8 - MS TEAMS
+[[on-window-detected]]
+if.app-id = "com.microsoft.teams2"
+run = ["move-node-to-workspace 8"]
+
+# WORKSPACE 9 - SPOTIFY
+[[on-window-detected]]
+if.app-id = "com.spotify.client"
+run = ["move-node-to-workspace 9"]

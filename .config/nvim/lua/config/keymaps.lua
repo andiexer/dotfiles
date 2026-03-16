@@ -3,6 +3,9 @@
 -- Add any additional keymaps here
 vim.keymap.set("i", "jj", "<ESC>", { silent = true })
 vim.keymap.set("i", "jk", "<ESC>", { silent = true })
+vim.keymap.set({ "n", "t" }, "<leader>tt", function()
+  Snacks.terminal(nil, { cwd = LazyVim.root() })
+end, { desc = "Toggle Terminal" })
 
 -- buffers
 -- vim.api.nvim_set_keymap("n", "bk", ":blast<enter>", { noremap = false })

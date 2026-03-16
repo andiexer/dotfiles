@@ -1,0 +1,3 @@
+WRN 2026-03-13T19:06:44.527 ?.73231    server_start:193: Failed to start server: operation not permitted: /var/folders/9h/gvq93pr91l1c2s91dzmgydn00000gn/T/nvim.andiexer/4Pjw3V/nvim.73231.0
+WRN 2026-03-13T19:06:44.527 ?.73233    server_start:193: Failed to start server: operation not permitted: /var/folders/9h/gvq93pr91l1c2s91dzmgydn00000gn/T/nvim.andiexer/WSqahI/nvim.73233.0
+WRN 2026-03-13T19:06:44.527 ?.73232    server_start:193: Failed to start server: operation not permitted: /var/folders/9h/gvq93pr91l1c2s91dzmgydn00000gn/T/nvim.andiexer/9MQzuz/nvim.73232.0
